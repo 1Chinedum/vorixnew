@@ -1,0 +1,66 @@
+.page-head{padding:4rem 0 2rem;text-align:center}.page-head h1{font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:.12em}.page-head p{color:var(--stone);margin-top:.8rem}
+.tools{display:flex;flex-direction:column;gap:1.2rem;margin-bottom:2rem}
+.searchbox{display:flex;align-items:center;gap:.7rem;border-bottom:1px solid var(--ink);padding:.7rem 0;max-width:100%}
+.searchbox input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:1.05rem;outline:none}.searchbox:focus-within{border-bottom-width:2px}
+#clear{background:none;border:0;font-size:1.6rem;line-height:1;cursor:pointer;color:var(--stone)}
+.filters{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{font:inherit;font-size:.9rem;background:none;border:1px solid var(--line);padding:.45rem 1.1rem;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--ink)}.chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.empty{text-align:center;padding:4rem 1rem}.empty p{margin:.8rem 0 1.5rem;color:var(--stone)}
+.chip{text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;padding:.55rem 1.15rem}
+.searchbox{border-bottom-color:var(--ink)}.searchbox input::placeholder{color:var(--stone)}
+
+/* ===== Full-screen product view ===== */
+.pv{position:fixed;inset:0;z-index:200;background:var(--bg);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);height:100vh;height:100dvh;animation:fade .3s both}
+.pv[hidden]{display:none}
+.pv-close{position:fixed;top:1rem;right:1.25rem;z-index:6;display:flex;align-items:center;gap:.6rem;background:var(--bg);color:var(--ink);border:1px solid var(--ink);padding:.55rem .95rem;cursor:pointer;font:inherit;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;transition:background .25s,color .25s}
+.pv-close b{font-size:1.3rem;line-height:1;font-weight:400}.pv-close:hover{background:var(--ink);color:var(--bg)}
+.pv-media{display:flex;flex-direction:column;min-height:0;min-width:0;background:var(--sand)}
+.pv-stage{position:relative;flex:1;min-height:0;overflow:hidden;touch-action:pan-y}
+.pv-track{display:flex;height:100%;transition:transform .5s cubic-bezier(.65,0,.25,1)}
+.pv-slide{flex:0 0 100%;min-width:0;height:100%;display:flex;align-items:center;justify-content:center}
+.pv-slide img{width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.pv-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid var(--ink);background:rgba(247,245,240,.92);color:var(--ink);font-size:1.7rem;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 .2rem;transition:background .25s,color .25s}
+.pv-arrow:hover{background:var(--ink);color:var(--bg)}.pv-arrow.prev{left:1rem}.pv-arrow.next{right:1rem}
+.pv-dots{position:absolute;left:0;right:0;bottom:.9rem;display:flex;justify-content:center;gap:.5rem}
+.pv-dots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:rgba(23,23,23,.3);cursor:pointer;transition:width .3s,background .3s}
+.pv-dots button.on{width:24px;background:var(--bronze)}
+.pv-sw{display:flex;justify-content:center;gap:1rem;padding:1rem;background:var(--bg);border-top:1px solid var(--line)}
+.sw{width:32px;height:32px;border-radius:50%;border:1px solid rgba(23,23,23,.28);padding:0;cursor:pointer;transition:transform .2s}
+.sw:hover{transform:scale(1.1)}.sw[aria-pressed=true]{box-shadow:0 0 0 3px var(--bg),0 0 0 4px var(--ink)}
+.pv-info{overflow-y:auto;padding:5rem clamp(1.5rem,4.5vw,5rem) 2rem;display:flex;flex-direction:column;justify-content:center;gap:1.3rem;min-height:0}
+.pv-info h2{font-size:clamp(2rem,3.4vw,3.2rem);text-transform:uppercase;letter-spacing:-.01em}
+.pv-price{font-size:1.5rem;font-weight:400;letter-spacing:.02em}
+.pv-desc{color:var(--stone);max-width:34rem}
+.pv-block{display:flex;flex-direction:column;gap:.4rem;padding-top:1.1rem;border-top:1px solid var(--line)}
+.pv-label{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze)}
+.pv-val{font-size:1.05rem}.pv-sub{font-size:.85rem;color:var(--stone)}
+.sizes{display:flex;flex-wrap:wrap;gap:.5rem}
+.size{min-width:46px;padding:.6rem .9rem;border:1px solid var(--line);background:none;font:inherit;cursor:pointer;transition:all .2s}
+.size:hover{border-color:var(--ink)}.size[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pv-wa{display:block;text-align:center;width:100%;text-transform:uppercase;letter-spacing:.16em;font-size:.8rem;padding:1.15rem 1.5rem}
+@media(max-width:820px){
+ .pv{display:block;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+ .pv-media{height:min(64dvh,560px)}
+ .pv-close{top:.7rem;right:.7rem;padding:.45rem .75rem}
+ .pv-info{overflow:visible;padding:1.5rem 1.25rem 0;gap:1.1rem}
+ .pv-arrow{width:40px;height:40px;font-size:1.4rem}.pv-arrow.prev{left:.6rem}.pv-arrow.next{right:.6rem}
+ .pv-cta{position:sticky;bottom:0;background:var(--bg);padding:.8rem 0 calc(.8rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);margin-top:.5rem}
+}
+@media(prefers-reduced-motion:reduce){.pv,.pv-track{animation:none!important;transition:none!important}}
+
+/* ===== One scrolling surface: the overlay itself scrolls ===== */
+.pv{display:block;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.pv-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);min-height:100vh;min-height:100dvh}
+.pv-media{position:sticky;top:0;height:100vh;height:100dvh;align-self:start}
+.pv-info{overflow:visible;justify-content:center;min-height:100vh;min-height:100dvh;padding:6rem clamp(1.5rem,4.5vw,5rem) 4rem}
+.pv-more{padding:clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,4rem) clamp(3rem,6vw,5rem);border-top:1px solid var(--line);background:#fff}
+.pv-more h3{font-size:clamp(1.6rem,3vw,2.2rem);margin:.2rem 0 2rem}
+@media(max-width:820px){
+ .pv-grid{display:block;min-height:0}
+ .pv-media{position:relative;height:min(64dvh,560px)}
+ .pv-info{min-height:0;padding:1.5rem 1.25rem 0}
+}
+/* WhatsApp button stays easy to find on short laptop screens too */
+.pv-cta{position:sticky;bottom:0;z-index:2;background:var(--bg);padding:1rem 0 1.25rem;margin-top:.5rem}
+@media(min-width:821px){.pv-cta{box-shadow:0 -14px 18px -10px var(--bg)}}

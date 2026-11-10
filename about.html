@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | VORIX</title>
+<meta name="description" content="Learn about VORIX, its philosophy and fashion identity.">
+<meta property="og:title" content="About | VORIX">
+<meta property="og:description" content="Learn about VORIX, its philosophy and fashion identity.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/hero.jpg">
+<link rel="icon" href="assets/icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/about.css">
+<script>
+function imgFallback(i){i.onerror=null;i.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="#E8E2D9"/><text x="200" y="255" text-anchor="middle" font-family="Georgia,serif" font-size="28" letter-spacing="6" fill="#8A8178">VORIX</text></svg>');}
+function fitImg(i){var t=i.naturalHeight/i.naturalWidth>1.18;i.classList.toggle('tall',t);i.parentElement.style.background=(t&&i.dataset.bg)?i.dataset.bg:'';}
+function logoFallback(i){var s=document.createElement('span');s.className='wordmark';s.textContent='VORIX';i.replaceWith(s);}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container bar">
+    <a class="logo" href="index.html" aria-label="VORIX home"><img src="assets/images/logo.png" alt="VORIX" onerror="logoFallback(this)"></a>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html" >Home</a>
+      <a href="collections.html" >Collections</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html" >Contact</a>
+      <a class="btn btn-sm nav-cta" href="#" data-wa target="_blank" rel="noopener">Make Inquiry</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="ab-hero"><div class="container wrap">
+  <div class="ab-text">
+    <span class="eyebrow">VORIX / The Brand</span>
+    <h1><span class="l">MORE THAN FASHION.</span><span class="l">IT’S AN <em>EXPRESSION.</em></span></h1>
+    <p class="lead">At VORIX, we believe personal style is a reflection of individuality. Every look is an opportunity to express confidence, character, and a sense of identity.</p>
+    <div class="btn-row"><a class="btn" href="collections.html">Explore Collections</a><a class="btn btn-ghost" href="contact.html">Contact Us</a></div>
+  </div>
+  <figure class="ab-photo frame"><img src="assets/images/brand/brand-01.jpg" alt="Two models wearing white and yellow VORIX graphic tees against a rusted container" onerror="imgFallback(this)"><figcaption>VORIX — Wear Your Vision</figcaption></figure>
+</div></section>
+
+<section class="ab-phil"><div class="container ab-two reveal">
+  <div><span class="eyebrow">N°01 / Our Philosophy</span><h2>STYLE THAT SPEAKS FOR YOU.</h2></div>
+  <div><p class="big">Fashion is more than what you wear. It is how you present yourself to the world. VORIX celebrates individuality through carefully selected styles that bring together contemporary fashion, everyday confidence, and personal expression.</p>
+  <p class="keys">Self-expression<i>✕</i>Confidence<i>✕</i>Individuality<i>✕</i>Authenticity</p></div>
+</div></section>
+
+<section class="container ab-strip" aria-label="VORIX photography">
+  <figure class="reveal"><img src="assets/images/brand/brand-02.jpg" alt="Models beside VORIX shopping bags" loading="lazy" onerror="imgFallback(this)"></figure>
+  <figure class="reveal"><img src="assets/images/brand/brand-04.jpg" alt="Models in black and orange VORIX jerseys" loading="lazy" onerror="imgFallback(this)"></figure>
+  <figure class="reveal"><img src="assets/images/hero.jpg" alt="Three models in VORIX graphic tees" loading="lazy" onerror="imgFallback(this)"></figure>
+</section>
+
+<section class="ab-id"><div class="container ab-two flip">
+  <figure class="ab-photo frame reveal"><img src="assets/images/brand/brand-03.jpg" alt="Two models in red and black VORIX track sets at night" loading="lazy" onerror="imgFallback(this)"></figure>
+  <div class="reveal"><span class="eyebrow">N°02 / Our Identity</span><h2>DEFINED BY STYLE. DRIVEN BY EXPRESSION.</h2>
+  <p class="big">Every collection reflects our appreciation for style, detail, and versatility. From everyday essentials to statement pieces, VORIX is here to make discovering your next favourite look effortless.</p>
+  <a class="btn btn-ghost" href="collections.html">View the Collections</a></div>
+</div></section>
+
+<section class="ab-commit"><div class="container">
+  <div class="reveal"><span class="eyebrow">N°03 / Our Commitment</span><h2>What we stand for</h2></div>
+  <div class="ab-cols">
+    <article class="reveal"><b>01</b><h3>STYLE</h3><p>Bringing together fashion choices that help you express your personality with confidence.</p></article>
+    <article class="reveal"><b>02</b><h3>QUALITY</h3><p>Presenting clothing selected with attention to appearance, detail, and everyday wearability.</p></article>
+    <article class="reveal"><b>03</b><h3>INDIVIDUALITY</h3><p>Celebrating personal style and encouraging everyone to wear what feels true to them.</p></article>
+  </div>
+</div></section>
+
+<section class="cta"><div class="container reveal"><h2>FIND YOUR NEXT FAVOURITE LOOK.</h2><p>Explore the VORIX collections and discover styles that speak to you.</p>
+  <div class="btn-row center"><a class="btn" href="collections.html">Explore Collections</a></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="container foot">
+    <div><a class="logo" href="index.html"><img src="assets/images/logo.png" alt="VORIX" onerror="logoFallback(this)"></a>
+      <p>Modern, considered clothing. Browse the collection and inquire on WhatsApp.</p></div>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="collections.html">Collections</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <div><p>WhatsApp</p><a href="#" data-wa target="_blank" rel="noopener">07076316859</a></div>
+  </div>
+  <p class="copy">© <span class="year"></span> VORIX. All rights reserved.</p>
+</footer>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

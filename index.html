@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VORIX | Modern Fashion</title>
+<meta name="description" content="VORIX is a modern fashion label. Explore the collection and inquire on WhatsApp.">
+<meta property="og:title" content="VORIX | Modern Fashion">
+<meta property="og:description" content="VORIX is a modern fashion label. Explore the collection and inquire on WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/hero.jpg">
+<link rel="icon" href="assets/icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<script>
+function imgFallback(i){i.onerror=null;i.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="#E8E2D9"/><text x="200" y="255" text-anchor="middle" font-family="Georgia,serif" font-size="28" letter-spacing="6" fill="#8A8178">VORIX</text></svg>');}
+function fitImg(i){var t=i.naturalHeight/i.naturalWidth>1.18;i.classList.toggle('tall',t);i.parentElement.style.background=(t&&i.dataset.bg)?i.dataset.bg:'';}
+function logoFallback(i){var s=document.createElement('span');s.className='wordmark';s.textContent='VORIX';i.replaceWith(s);}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container bar">
+    <a class="logo" href="index.html" aria-label="VORIX home"><img src="assets/images/logo.png" alt="VORIX" onerror="logoFallback(this)"></a>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="collections.html" >Collections</a>
+      <a href="about.html" >About</a>
+      <a href="contact.html" >Contact</a>
+      <a class="btn btn-sm nav-cta" href="#" data-wa target="_blank" rel="noopener">Make Inquiry</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="label a-fade"><b>N°01</b> The new standard of style</p>
+      <h1><span class="ln">WEAR YOUR</span><span class="ln"><em>IDENTITY.</em></span></h1>
+      <p class="sub">Discover a new expression of everyday fashion. Explore carefully selected styles designed to make every appearance count.</p>
+      <div class="btn-row"><a class="btn" href="collections.html">Explore Collection</a><a class="btn btn-ghost" href="about.html">Discover VORIX</a></div>
+      <div class="hero-foot"><a class="scroll" href="#shop" aria-label="Scroll to collections"><i></i>Scroll</a><span class="sig">VORI<b>X</b></span></div>
+    </div>
+    <figure class="hero-photo">
+      <img src="assets/images/hero.jpg" alt="VORIX campaign: three models in black, white and red graphic tees in front of a shipping container" onerror="imgFallback(this)">
+      <span class="idx">N°01 / Collection</span>
+      <figcaption>VORIX — The Collection</figcaption>
+    </figure>
+  </div>
+</section>
+<div class="marquee" aria-hidden="true"><div class="track"><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i></div></div>
+<section class="section" id="shop"><div class="container">
+  <div class="sec-head reveal"><div><span class="eyebrow">N°02 / Collections</span><h2>Shop by collection</h2></div><a class="link" href="collections.html">View All Collections</a></div>
+  <div class="tiles" id="home-collections"></div>
+</div></section>
+<section class="section alt"><div class="container">
+  <div class="sec-head reveal"><div><span class="eyebrow">N°03 / Featured</span><h2>Featured pieces</h2></div><a class="link" href="collections.html">View All Collections</a></div>
+  <div class="grid" id="home-featured"></div>
+</div></section>
+<section class="section"><div class="container editorial">
+  <div class="ed-img reveal"><img src="assets/images/brand/brand-01.jpg" alt="VORIX brand photography" loading="lazy" onerror="imgFallback(this)"></div>
+  <div class="ed-text reveal"><span class="eyebrow">N°04 / The Brand</span><h2>The VORIX point of view</h2>
+    <p>VORIX is built on a simple idea: what you wear should say something true about you. Our pieces pair everyday ease with a confident, contemporary edge, so you can dress with intent, whatever the day brings.</p>
+    <a class="btn btn-ghost" href="about.html">About VORIX</a></div>
+</div></section>
+<section class="cta"><div class="container reveal"><h2>Find your next piece.</h2><p>Browse the collection, then message us on WhatsApp to order.</p>
+  <div class="btn-row center"><a class="btn" href="collections.html">Explore Collection</a><a class="btn btn-ghost" href="contact.html">Contact Us</a></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="container foot">
+    <div><a class="logo" href="index.html"><img src="assets/images/logo.png" alt="VORIX" onerror="logoFallback(this)"></a>
+      <p>Modern, considered clothing. Browse the collection and inquire on WhatsApp.</p></div>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="collections.html">Collections</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <div><p>WhatsApp</p><a href="#" data-wa target="_blank" rel="noopener">07076316859</a></div>
+  </div>
+  <p class="copy">© <span class="year"></span> VORIX. All rights reserved.</p>
+</footer>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

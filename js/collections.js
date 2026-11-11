@@ -36,12 +36,25 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#reset").addEventListener("click", () => { search.value = ""; state.q = ""; setCat("All"); });
 
   // ===== Full-screen product view =====
-  let cur, slides, idx, size, lastFocus, track, dots, sws;
+  let cur, slides, idx, size, lastFocus, track, dots, sws, vqty = 1;
+  // ----- Autoplay: advance every 3000 ms; one timer at most, owned by the open product view -----
+  const AUTOPLAY_MS = 3000;
+  const rm = matchMedia("(prefers-reduced-motion: reduce)");
+  const canHover = matchMedia("(hover: hover) and (pointer: fine)");   // hover-pause only on devices that can really hover
+  let timer = null, hovering = false, touching = false;
+  function stopAuto() { clearTimeout(timer); timer = null; }
+  function startAuto() {            // (re)starts the full 3 s countdown, or does nothing if autoplay shouldn't run
+    stopAuto();
+    if (pv.hidden || !slides || slides.length < 2 || hovering || touching || document.hidden || rm.matches) return;
+    timer = setTimeout(() => go(idx + 1), AUTOPLAY_MS);
+  }
+  document.addEventListener("visibilitychange", startAuto);   // stops when the tab is hidden, resumes when visible
+  rm.addEventListener("change", startAuto);
   const open = () => !pv.hidden;
 
   function openProduct(id) {
     const p = products.find(x => x.id === +id); if (!p) return;
-    cur = p; size = null; idx = 0; if (pv.hidden) lastFocus = document.activeElement;
+    cur = p; size = null; vqty = 1; idx = 0; hovering = false; touching = false; if (pv.hidden) lastFocus = document.activeElement;
     const related = [...products.filter(x => x.id !== p.id && x.category === p.category), ...products.filter(x => x.id !== p.id && x.category !== p.category)].slice(0, 4);
     slides = []; p.colours.forEach((c, ci) => [c.image, ...(c.additionalImages || [])].forEach(src => slides.push({ src, ci, bg: c.bg })));
     const multi = slides.length > 1, many = p.colours.length > 1;
@@ -49,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <button class="pv-close" type="button" aria-label="Close product view"><span>Close</span><b aria-hidden="true">&times;</b></button>
       <div class="pv-grid"><div class="pv-media">
         <div class="pv-stage"><div class="pv-track">${slides.map((s, i) =>
-          `<div class="pv-slide" style="background:${s.bg || "var(--sand)"}" aria-label="Image ${i + 1} of ${slides.length}"><img src="${s.src}" alt="${p.name} in ${p.colours[s.ci].name}" draggable="false" ${i ? 'loading="lazy"' : ""} onerror="imgFallback(this)"></div>`).join("")}</div>
+          `<div class="pv-slide${i === 0 ? " on" : ""}" aria-hidden="${i !== 0}" style="background:${s.bg || "var(--sand)"}" aria-label="Image ${i + 1} of ${slides.length}"><img src="${s.src}" alt="${p.name} in ${p.colours[s.ci].name}" draggable="false" onerror="imgFallback(this)"></div>`).join("")}</div>
           ${multi ? `<button class="pv-arrow prev" type="button" aria-label="Previous photo">&#8249;</button><button class="pv-arrow next" type="button" aria-label="Next photo">&#8250;</button>
           <div class="pv-dots">${slides.map((s, i) => `<button type="button" data-i="${i}" aria-label="Photo ${i + 1}"></button>`).join("")}</div>` : ""}
         </div>
@@ -62,25 +75,31 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="pv-price">${fmtPrice(p.price)}</p>
         <p class="pv-desc">${p.description}</p>
         <div class="pv-block"><span class="pv-label">Colour</span><span id="pv-colour" class="pv-val"></span>${many ? `<span class="pv-sub">Available in ${p.colours.map(c => c.name).join(", ")}</span>` : ""}</div>
-        ${(p.sizes || []).length ? `<div class="pv-block"><span class="pv-label">Size</span><div class="sizes" role="group" aria-label="Choose size">${p.sizes.map(s => `<button type="button" class="size" data-s="${s}" aria-pressed="false">${s}</button>`).join("")}</div></div>` : ""}
+        ${(p.sizes || []).length ? `<div class="pv-block"><span class="pv-label">Size</span><div class="sizes" role="group" aria-label="Choose size">${p.sizes.map(s => `<button type="button" class="size" data-s="${s}" aria-pressed="false">${s}</button>`).join("")}</div><p class="err" id="pv-size-err" role="alert"></p></div>` : ""}
+        <div class="pv-block"><span class="pv-label">Quantity</span><div class="qty vq"><button type="button" data-vq="-1" aria-label="Decrease quantity">&minus;</button><span id="pv-qty" aria-live="polite">1</span><button type="button" data-vq="1" aria-label="Increase quantity">+</button></div></div>
         <div class="pv-block"><span class="pv-label">Availability</span><span class="pv-val">${p.availability}</span></div>
-        <div class="pv-cta"><a id="pv-wa" class="btn pv-wa" target="_blank" rel="noopener">Inquire on WhatsApp</a></div>
+        <div class="pv-cta"><div class="pv-btns"><button type="button" id="pv-add" class="btn pv-wa">Add to Cart</button><a id="pv-order" class="btn btn-ghost pv-wa">Order Now</a></div><a id="pv-wa" class="pv-ask" target="_blank" rel="noopener">Or ask a quick question on WhatsApp</a></div>
       </div></div>
       <section class="pv-more"><span class="eyebrow">You may also like</span><h3>More from VORIX</h3><div class="grid">${related.map(cardHTML).join("")}</div></section>`;
     track = $(".pv-track", pv); dots = $$(".pv-dots button", pv); sws = $$(".sw", pv);
     pv.hidden = false; pv.scrollTop = 0; observeReveals(); document.body.classList.add("lock");
-    sync(); setParam("product", p.id); $(".pv-close", pv).focus();
+    const stage = $(".pv-stage", pv);   // desktop: pause while the pointer is over the photo
+    stage.addEventListener("pointerenter", e => { if (e.pointerType === "mouse" && canHover.matches) { hovering = true; stopAuto(); } });
+    stage.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") { hovering = false; startAuto(); } });
+    sync(); startAuto(); setParam("product", p.id); $(".pv-close", pv).focus();
   }
   function sync() {
     const s = slides[idx], c = cur.colours[s.ci];
-    track.style.transform = `translateX(${-idx * 100}%)`;
+    $$(".pv-slide", pv).forEach((el, k) => { el.classList.toggle("on", k === idx); el.setAttribute("aria-hidden", k !== idx); });
     $("#pv-colour").textContent = c.name;
     dots.forEach((d, k) => { d.classList.toggle("on", k === idx); d.setAttribute("aria-current", k === idx); });
     sws.forEach((b, k) => b.setAttribute("aria-pressed", k === s.ci));
     $("#pv-wa").href = waURL(cur, c.name, size);
+    $("#pv-order").href = orderURL(cur, c.name, size, vqty);
   }
-  const go = i => { idx = (i + slides.length) % slides.length; sync(); };
+  const go = i => { idx = (i + slides.length) % slides.length; sync(); startAuto(); };
   function closeProduct() {
+    stopAuto(); hovering = false; touching = false;
     pv.hidden = true; pv.innerHTML = ""; document.body.classList.remove("lock"); setParam("product", null);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
@@ -93,8 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
     else if (e.target.closest(".next")) go(idx + 1);
     else if (e.target.closest(".pv-dots button")) go(+e.target.closest("button").dataset.i);
     else if (e.target.closest(".sw")) go(slides.findIndex(s => s.ci === +e.target.closest(".sw").dataset.c));
+    else if (e.target.closest("[data-vq]")) {
+      vqty = Math.min(Cart.MAX_QTY, Math.max(1, vqty + Number(e.target.closest("[data-vq]").dataset.vq))); $("#pv-qty").textContent = vqty; sync();
+    }
+    else if (e.target.closest("#pv-add")) {
+      if ((cur.sizes || []).length && !size) {
+        const box = $("#pv-size-err"); box.textContent = "Please choose a size to add this to your bag.";
+        const first = $(".size", pv); if (first) { first.scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" }); first.focus({ preventScroll: true }); }
+        return;
+      }
+      addAndToast(Cart.add(cur.id, cur.colours[slides[idx].ci].name, size || "", vqty));
+    }
     else if (e.target.closest(".size")) {
       const b = e.target.closest(".size"); size = size === b.dataset.s ? null : b.dataset.s;
+      const er = $("#pv-size-err"); if (er) er.textContent = "";
       $$(".size", pv).forEach(x => x.setAttribute("aria-pressed", x.dataset.s === size)); sync();
     }
   });
@@ -104,14 +135,22 @@ document.addEventListener("DOMContentLoaded", () => {
     else if (e.key === "ArrowLeft" && slides.length > 1) go(idx - 1);
     else if (e.key === "ArrowRight" && slides.length > 1) go(idx + 1);
   });
-  // Touch swipe
+  // Touch swipe (pauses autoplay while a finger is down)
   let sx = 0, sy = 0;
-  pv.addEventListener("touchstart", e => { if (e.target.closest(".pv-stage")) { sx = e.changedTouches[0].clientX; sy = e.changedTouches[0].clientY; } }, { passive: true });
-  pv.addEventListener("touchend", e => {
-    if (!e.target.closest(".pv-stage") || slides.length < 2) return;
-    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) go(idx + (dx < 0 ? 1 : -1));
+  pv.addEventListener("touchstart", e => {
+    if (!e.target.closest(".pv-stage")) return;
+    touching = true; stopAuto(); sx = e.changedTouches[0].clientX; sy = e.changedTouches[0].clientY;
   }, { passive: true });
+  const endTouch = e => {
+    if (!touching) return; touching = false;
+    if (e.type === "touchend" && slides.length > 1) {
+      const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) { go(idx + (dx < 0 ? 1 : -1)); return; }
+    }
+    startAuto();
+  };
+  pv.addEventListener("touchend", endTouch, { passive: true });
+  pv.addEventListener("touchcancel", endTouch, { passive: true });
 
   render();
   if (params.get("product")) openProduct(params.get("product"));

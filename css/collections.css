@@ -64,3 +64,19 @@
 /* WhatsApp button stays easy to find on short laptop screens too */
 .pv-cta{position:sticky;bottom:0;z-index:2;background:var(--bg);padding:1rem 0 1.25rem;margin-top:.5rem}
 @media(min-width:821px){.pv-cta{box-shadow:0 -14px 18px -10px var(--bg)}}
+
+/* ===== Cross-fade slider (suits autoplay and the loop back to the first photo) ===== */
+.pv-track{display:block;position:relative;transition:none}
+.pv-slide{position:absolute;inset:0;flex:none;opacity:0;visibility:hidden;transition:opacity .8s ease,visibility 0s .8s}
+.pv-slide.on{opacity:1;visibility:visible;transition:opacity .8s ease,visibility 0s}
+@media(prefers-reduced-motion:reduce){.pv-slide,.pv-slide.on{transition:none}}
+.pv-ask{display:block;text-align:center;margin-top:.8rem;font-size:.78rem;color:var(--stone);text-decoration:underline;text-underline-offset:3px;transition:color .2s}.pv-ask:hover{color:var(--ink)}
+
+/* ===== Product view: quantity + Add to Cart ===== */
+.qty{display:inline-flex;align-items:stretch;border:1px solid var(--line);background:#fff;align-self:flex-start}
+.qty button{width:46px;border:0;background:none;font:inherit;font-size:1.3rem;cursor:pointer;transition:background .2s}.qty button:hover{background:var(--sand)}
+.qty span{min-width:54px;display:grid;place-items:center;border-inline:1px solid var(--line);font-size:1rem}
+.err{color:#A32A22;font-size:.85rem;margin-top:.5rem}.err:empty{display:none}
+.pv-btns{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.pv-btns .pv-wa{padding:1.1rem .6rem}
+@media(max-width:820px){.pv-btns .pv-wa{padding:1rem .4rem;font-size:.72rem;letter-spacing:.1em}}

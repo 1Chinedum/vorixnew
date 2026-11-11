@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Shopping Bag | VORIX</title>
+<meta name="description" content="Review your selected VORIX styles, choose what to order now and continue to checkout.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Your Shopping Bag | VORIX">
+<meta property="og:description" content="Review your selected VORIX styles and continue to checkout.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/hero.jpg">
+<link rel="icon" href="assets/icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/cart.css">
+<script>
+function imgFallback(i){i.onerror=null;i.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="#E8E2D9"/><text x="200" y="255" text-anchor="middle" font-family="Georgia,serif" font-size="28" letter-spacing="6" fill="#8A8178">VORIX</text></svg>');}
+function fitImg(i){var t=i.naturalHeight/i.naturalWidth>1.18;i.classList.toggle('tall',t);i.parentElement.style.background=(t&&i.dataset.bg)?i.dataset.bg:'';}
+function logoFallback(i){var s=document.createElement('span');s.className='wordmark';s.textContent='VORIX';i.replaceWith(s);}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container bar">
+    <a class="logo" href="index.html" aria-label="VORIX home"><img src="assets/images/logo.png" alt="VORIX" onerror="logoFallback(this)"></a>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html" >Home</a>
+      <a href="collections.html" >Collections</a>
+      <a href="about.html" >About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-sm nav-cta" href="#" data-wa target="_blank" rel="noopener">Make Inquiry</a>
+    </nav>
+    <a class="cart-link" href="cart.html" aria-label="Shopping bag, empty"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.2 8.5h13.6l-1 11.5H6.2l-1-11.5z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg><span class="cart-badge" hidden>0</span></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="page-head"><div class="container"><span class="eyebrow">Your Bag</span><h1>YOUR SHOPPING BAG</h1>
+  <p>Your selected styles, all in one place.</p></div></section>
+
+<div id="empty" class="container empty-cart" hidden>
+  <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.2 8.5h13.6l-1 11.5H6.2l-1-11.5z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg>
+  <h2>Your bag is empty</h2>
+  <p>Nothing here yet. Explore the collections and add the pieces you love.</p>
+  <a class="btn" href="collections.html">Shop Collections</a>
+</div>
+
+<div id="cartwrap" class="container cart-grid" hidden>
+  <section class="cart-main" aria-label="Items in your bag">
+    <div class="cart-tools">
+      <label class="chk"><input type="checkbox" id="sel-all"><span class="box" aria-hidden="true"></span><span class="chk-text">Select all</span></label>
+      <button type="button" id="desel" class="textbtn">Deselect all</button>
+      <a class="textbtn right" href="collections.html">Continue Shopping</a>
+    </div>
+    <ul id="cart-list" class="cart-list"></ul>
+    <p class="cart-note">Tick the pieces you want to order now. Anything unticked stays in your bag for later.</p>
+  </section>
+
+  <aside class="cart-sum" aria-label="Order summary"><div class="sum-card">
+    <h2>Order Summary</h2>
+    <dl class="sum-rows">
+      <div><dt>Total items in bag</dt><dd id="s-units">0</dd></div>
+      <div><dt>Selected products</dt><dd id="s-selected">0</dd></div>
+      <div><dt>Selected subtotal</dt><dd id="s-sub">₦0</dd></div>
+      <div><dt>Delivery fee</dt><dd id="s-fee">To be confirmed</dd></div>
+    </dl>
+    <div class="sum-total"><span>Total</span><strong id="s-total">₦0</strong></div>
+    <button type="button" id="checkout" class="btn btn-lg" disabled>Proceed to Checkout</button>
+    <p id="hint" class="fine">Select at least one product to continue.</p>
+    <a class="textbtn center" href="collections.html">Continue Shopping</a>
+  </div></aside>
+</div>
+<p id="live" class="sr-only" role="status" aria-live="polite"></p>
+</main>
+<footer class="site-footer">
+  <div class="container foot">
+    <div><a class="logo" href="index.html"><img src="assets/images/logo.png" alt="VORIX" onerror="logoFallback(this)"></a>
+      <p>Modern, considered clothing. Browse the collection and inquire on WhatsApp.</p></div>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="collections.html">Collections</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <div><p>WhatsApp</p><a href="#" data-wa target="_blank" rel="noopener">07076316859</a></div>
+  </div>
+  <p class="copy">© <span class="year"></span> VORIX. All rights reserved.</p>
+</footer>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script src="js/cart.js"></script>
+
+</body>
+</html>

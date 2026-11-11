@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complete Your Enquiry | VORIX</title>
+<meta name="description" content="Complete your VORIX product enquiry and send your order details on WhatsApp.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Complete Your Enquiry | VORIX">
+<meta property="og:description" content="Complete your VORIX product enquiry and send your order details on WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/hero.jpg">
+<link rel="icon" href="assets/icons/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/order.css">
+<script>
+function imgFallback(i){i.onerror=null;i.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="#E8E2D9"/><text x="200" y="255" text-anchor="middle" font-family="Georgia,serif" font-size="28" letter-spacing="6" fill="#8A8178">VORIX</text></svg>');}
+function fitImg(i){var t=i.naturalHeight/i.naturalWidth>1.18;i.classList.toggle('tall',t);i.parentElement.style.background=(t&&i.dataset.bg)?i.dataset.bg:'';}
+function logoFallback(i){var s=document.createElement('span');s.className='wordmark';s.textContent='VORIX';i.replaceWith(s);}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container bar">
+    <a class="logo" href="index.html" aria-label="VORIX home"><img src="assets/images/logo.png" alt="VORIX" onerror="logoFallback(this)"></a>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html" >Home</a>
+      <a href="collections.html" >Collections</a>
+      <a href="about.html" >About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-sm nav-cta" href="#" data-wa target="_blank" rel="noopener">Make Inquiry</a>
+    </nav>
+    <a class="cart-link" href="cart.html" aria-label="Shopping bag, empty"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.2 8.5h13.6l-1 11.5H6.2l-1-11.5z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg><span class="cart-badge" hidden>0</span></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+<section class="page-head"><div class="container"><span class="eyebrow">Your Order</span><h1>COMPLETE YOUR ENQUIRY</h1>
+  <p>You’re one step closer to your next favourite look. Fill in your details below and we’ll assist you with your order.</p></div></section>
+
+<div id="notfound" class="container nf" hidden>
+  <h2>We couldn’t find that product</h2>
+  <p>The product link may be incomplete or out of date. Browse the collections to choose your piece, then tap Add to Cart.</p>
+  <a class="btn" href="collections.html">Browse Collections</a>
+</div>
+<div id="emptysel" class="container nf" hidden>
+  <h2>No products selected</h2>
+  <p>Choose the pieces you want to order in your shopping bag, then continue to checkout.</p>
+  <a class="btn" href="cart.html">Go to Your Bag</a>
+</div>
+
+<div id="orderwrap" class="container ord-grid" hidden>
+  <form id="orderform" class="ord-form" novalidate>
+    <fieldset><legend><b>01</b> Customer Details</legend>
+      <div class="field"><label for="f-name">Full Name <abbr title="required">*</abbr></label><input id="f-name" name="name" type="text" autocomplete="name" aria-describedby="e-name" required><p class="err" id="e-name" role="alert"></p></div>
+      <div class="row2">
+      <div class="field"><label for="f-phone">Phone Number <abbr title="required">*</abbr></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="e-phone" required><p class="err" id="e-phone" role="alert"></p></div>
+      <div class="field"><label for="f-email">Email Address <span class="opt">(optional)</span></label><input id="f-email" name="email" type="email" autocomplete="email" aria-describedby="e-email"><p class="err" id="e-email" role="alert"></p></div>
+      </div>
+    </fieldset>
+
+    <fieldset><legend><b>02</b> Delivery Information</legend>
+      <div class="row2">
+        <div class="field"><label for="f-state">State <abbr title="required">*</abbr></label><select id="f-state" name="state" autocomplete="address-level1" aria-describedby="e-state" required><option value="">Select your state</option><option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option><option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option><option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option><option>Ekiti</option><option>Enugu</option><option>FCT (Abuja)</option><option>Gombe</option><option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option><option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option><option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option><option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option><option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option><option>Other (outside Nigeria)</option></select><p class="err" id="e-state" role="alert"></p></div>
+      <div class="field"><label for="f-city">City <abbr title="required">*</abbr></label><input id="f-city" name="city" type="text" autocomplete="address-level2" aria-describedby="e-city" required><p class="err" id="e-city" role="alert"></p></div>
+      </div>
+      <div class="field"><label for="f-address">Full Delivery Address <abbr title="required">*</abbr></label><textarea id="f-address" name="address" rows="3" autocomplete="street-address" aria-describedby="e-address" required></textarea><p class="err" id="e-address" role="alert"></p></div>
+    </fieldset>
+
+    <fieldset id="fs-single" hidden><legend><b>03</b> Product Information</legend>
+      <dl class="ro">
+        <div><dt>Selected Product</dt><dd id="ro-name"></dd></div>
+        <div><dt>Category</dt><dd id="ro-cat"></dd></div>
+        <div><dt>Selected Colour</dt><dd id="ro-colour"></dd></div>
+        <div id="ro-size-row"><dt>Selected Size</dt><dd id="ro-size"></dd></div>
+        <div><dt>Price</dt><dd id="ro-price"></dd></div>
+      </dl>
+      <div class="field" id="size-pick" hidden><label id="size-label">Choose your size <abbr title="required">*</abbr></label>
+        <div class="sizes" role="group" aria-labelledby="size-label" id="sizes"></div><p class="err" id="e-size" role="alert"></p></div>
+      <div class="field qty-field"><label for="f-qty">Quantity</label>
+        <div class="qty"><button type="button" id="q-minus" aria-label="Decrease quantity">&minus;</button><input id="f-qty" name="qty" type="number" inputmode="numeric" min="1" max="20" value="1"><button type="button" id="q-plus" aria-label="Increase quantity">+</button></div></div>
+      <p class="change"><a id="change-link" href="collections.html">Change product, colour or size</a></p>
+    </fieldset>
+
+    <fieldset><legend><b id="notes-num">04</b> Additional Information</legend>
+      <div class="field"><label for="f-notes">Additional Notes <span class="opt">(optional)</span></label><textarea id="f-notes" name="notes" rows="3" placeholder="Anything we should know about your order or delivery?"></textarea></div>
+    </fieldset>
+
+    <div class="form-total"><span>Total</span><strong id="ft">—</strong></div>
+    <button type="submit" class="btn btn-lg">Submit Order via WhatsApp</button>
+    <p class="fine">This opens WhatsApp with your details ready in a message. Your enquiry is only sent when you press Send in WhatsApp. Payment and delivery details are confirmed with us there.</p>
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+  </form>
+
+  <aside class="ord-sum" aria-label="Order summary"><div class="sum-card">
+    <h2>Order Summary</h2>
+    <ul class="sum-list" id="sum-list"></ul>
+    <dl class="sum-rows">
+      <div><dt>Items</dt><dd id="sum-units"></dd></div>
+      <div><dt>Subtotal</dt><dd id="sum-sub"></dd></div>
+      <div><dt>Delivery fee</dt><dd id="sum-fee"></dd></div>
+    </dl>
+    <div class="sum-total"><span>Total</span><strong id="sum-total"></strong></div>
+    <p class="change" id="edit-bag" hidden><a href="cart.html">Edit your bag</a></p>
+  </div></aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container foot">
+    <div><a class="logo" href="index.html"><img src="assets/images/logo.png" alt="VORIX" onerror="logoFallback(this)"></a>
+      <p>Modern, considered clothing. Browse the collection and inquire on WhatsApp.</p></div>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="collections.html">Collections</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <div><p>WhatsApp</p><a href="#" data-wa target="_blank" rel="noopener">07076316859</a></div>
+  </div>
+  <p class="copy">© <span class="year"></span> VORIX. All rights reserved.</p>
+</footer>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script src="js/order.js"></script>
+
+</body>
+</html>

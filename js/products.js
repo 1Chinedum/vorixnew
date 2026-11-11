@@ -12,7 +12,7 @@ const WHATSAPP_NUMBER = "2347076316859";
    Until you do, each button simply opens that platform's home page. */
 const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/",
-  tiktok: "https://www.tiktok.com/",
+  tiktok: "https://www.tiktok.com/@vorix524?_r=1&_t=ZS-9BJQ7GdokiL",
   facebook: "https://www.facebook.com/"
 };
 /* Delivery fee used in the shopping bag and at checkout.

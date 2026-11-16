@@ -4,7 +4,7 @@
    - order.html?product=ID&colour=NAME&size=SIZE&qty=N  -> one item ("Order Now")
    Every product detail and price comes from products.js. The finished order message opens in WhatsApp;
    the customer must press Send. */
-document.addEventListener("DOMContentLoaded", () => {
+onStoreReady(() => {
   const q = new URLSearchParams(location.search);
   const f = id => $("#" + id), form = f("orderform");
   const cartMode = q.get("cart") === "1";
@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     const idParam = q.get("product");
     const p = /^\d{1,6}$/.test(idParam || "") ? products.find(x => x.id === Number(idParam)) : null;
-    if (!p) { f("notfound").hidden = false; return; }                        // missing / invalid / unknown product
+    if (!p) { f("notfound").hidden = false; return; }
+    if (p.soldOut) { f("notfound").querySelector("h2").textContent = "This piece is currently out of stock"; f("notfound").querySelector("p").textContent = "Sorry, " + p.name + " is not available to order right now. Browse the collections to choose another piece."; f("notfound").hidden = false; return; }                        // missing / invalid / unknown product
     const colour = p.colours.find(c => norm(c.name) === norm(q.get("colour") || "")) || p.colours[0];
     const hasSizes = (p.sizes || []).length > 0;
     size = hasSizes ? (p.sizes.find(s => s.toLowerCase() === (q.get("size") || "").toLowerCase()) || null) : null;

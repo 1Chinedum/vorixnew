@@ -205,3 +205,7 @@ body.lock{overflow:hidden}
 .qa button:hover,.qa button:focus-visible{background:var(--ink);color:#fff;border-color:var(--ink)}
 @media(prefers-reduced-motion:reduce){#toast{transition:none}.cart-badge.bump,.qa{animation:none}}
 @media(max-width:820px){body.lock #toast{bottom:12.6rem}}
+
+.was{color:var(--stone);font-weight:300;font-size:.82em;margin-left:.4rem}
+.tag.out{background:var(--ink);color:#fff}
+.is-off{pointer-events:none;opacity:.35}

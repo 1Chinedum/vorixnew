@@ -14,16 +14,17 @@ function dotsHTML(p, max = 4) {
     `<button type="button" class="dot${i === 0 ? " on" : ""}" data-colour="${i}" style="background:${swatchCSS(c.swatch)}" title="${c.name}" aria-label="Show ${c.name}"></button>`).join("");
   return `<span class="dots" role="group" aria-label="Available in ${p.colours.map(c => c.name).join(", ")}">${shown}${p.colours.length > max ? `<span class="more">+${p.colours.length - max}</span>` : ""}</span>`;
 }
+const priceHTML = p => fmtPrice(p.price) + (p.previousPrice ? ` <s class="was" aria-label="Previous price ${fmtPrice(p.previousPrice)}">${fmtPrice(p.previousPrice)}</s>` : "");
 function cardHTML(p) {
   const c = p.colours[0];
   return `<article class="card reveal" data-id="${p.id}">
-    <a class="card-img" href="collections.html?product=${p.id}" data-detail="${p.id}" aria-label="View ${p.name}">${pimg(c.image, p.name, c.bg)}${p.newArrival ? '<span class="tag">New</span>' : ""}</a>
+    <a class="card-img" href="collections.html?product=${p.id}" data-detail="${p.id}" aria-label="View ${p.name}">${pimg(c.image, p.name, c.bg)}${p.soldOut ? '<span class="tag out">Sold out</span>' : p.newArrival ? '<span class="tag">New</span>' : ""}</a>
     <div class="card-body">
       <p class="muted">${p.category}</p><h3>${p.name}</h3>
-      <div class="row"><p class="price">${fmtPrice(p.price)}</p>${dotsHTML(p)}</div>
+      <div class="row"><p class="price">${priceHTML(p)}</p>${dotsHTML(p)}</div>
       <div class="card-actions">
         <a class="btn btn-ghost btn-sm" href="collections.html?product=${p.id}" data-detail="${p.id}">View Product</a>
-        <button type="button" class="btn btn-sm" data-add aria-expanded="false">Add to Cart</button>
+        ${p.soldOut ? '<button type="button" class="btn btn-sm" disabled>Sold out</button>' : '<button type="button" class="btn btn-sm" data-add aria-expanded="false">Add to Cart</button>'}
       </div>
     </div></article>`;
 }
@@ -45,7 +46,7 @@ const Cart = (() => {
     const out = new Map();
     (Array.isArray(arr) ? arr : []).forEach(l => {
       if (!l || typeof l !== "object") return;
-      const p = products.find(x => x.id === Number(l.id)); if (!p) return;
+      const p = products.find(x => x.id === Number(l.id)); if (!p || p.soldOut) return;      // sold-out products cannot stay in the bag
       const c = p.colours.find(c => norm(c.name) === norm(l.colour || "")); if (!c) return;
       let size = "";
       if ((p.sizes || []).length) { size = p.sizes.find(s => s.toLowerCase() === String(l.size || "").toLowerCase()); if (!size) return; }
@@ -72,6 +73,7 @@ const Cart = (() => {
   }
   function add(id, colour, size, qty) {
     const p = products.find(x => x.id === Number(id)); if (!p) return { ok: false, error: "That product could not be found." };
+    if (p.soldOut) return { ok: false, error: "Sorry, this product is currently out of stock." };
     const c = p.colours.find(c => norm(c.name) === norm(colour || "")); if (!c) return { ok: false, error: "Please choose a colour." };
     let s = "";
     if ((p.sizes || []).length) { s = p.sizes.find(x => x.toLowerCase() === String(size || "").toLowerCase()); if (!s) return { ok: false, error: "Please choose a size." }; }
@@ -129,7 +131,7 @@ function observeReveals() {
   els.forEach(e => io.observe(e));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+onStoreReady(() => {
   const btn = $(".menu-btn"), nav = $("#nav");
   btn.addEventListener("click", () => {
     const open = nav.classList.toggle("open");

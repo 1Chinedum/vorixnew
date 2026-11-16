@@ -12,7 +12,7 @@ const WHATSAPP_NUMBER = "2347076316859";
    Until you do, each button simply opens that platform's home page. */
 const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/",
-  tiktok: "https://www.tiktok.com/@vorix524?_r=1&_t=ZS-9BJQ7GdokiL",
+  tiktok: "https://www.tiktok.com/",
   facebook: "https://www.facebook.com/"
 };
 /* Delivery fee used in the shopping bag and at checkout.
@@ -63,7 +63,7 @@ const products = [
       C("Red & Black", ["#D9291C", "#151515"], "trackset-red-black.jpg", "#fefefe", [])
     ],
     sizes: ["S", "M", "L", "XL"], availability: AVAIL, featured: true, newArrival: false, keywords: ["jacket", "shorts", "set", "tracksuit", "two piece"] },
-  { id: 6, name: "Black & Orange Track Set", category: "Sets & Jackets", price: 150000, /* OFFICIAL price, confirmed by VORIX */
+  { id: 6, name: "Black & Orange Track Set", category: "Sets & Jackets", price: 190000, /* OFFICIAL price, confirmed by VORIX */
     description: "A two-piece track set featuring a zip-up jacket and matching trousers, finished with bold orange panel detailing and a VORIX crest. Sharp, sporty and distinctive.",
     colours: [
       C("Black & Orange", ["#151515", "#E9822B"], "trackset-black-orange.jpg", "#fefefe", [])

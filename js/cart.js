@@ -1,5 +1,5 @@
 /* VORIX shopping bag page. Reads the bag from Cart (main.js); every price comes from products.js. */
-document.addEventListener("DOMContentLoaded", () => {
+onStoreReady(() => {
   const list = $("#cart-list"), empty = $("#empty"), wrap = $("#cartwrap"), selAll = $("#sel-all"), btn = $("#checkout"), live = $("#live");
   const money = n => n == null ? "Price on request" : fmtPrice(n);
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");

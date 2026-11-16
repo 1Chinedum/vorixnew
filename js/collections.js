@@ -1,5 +1,5 @@
 const state = { cat: "All", q: "" };
-document.addEventListener("DOMContentLoaded", () => {
+onStoreReady(() => {
   const grid = $("#grid"), empty = $("#empty"), filters = $("#filters"),
         search = $("#search"), clear = $("#clear"), count = $("#count"), pv = $("#pv");
   const cats = ["All", ...(products.some(p => p.newArrival) ? ["New Arrivals"] : []),
@@ -72,13 +72,13 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="pv-info">
         <p class="eyebrow">${p.category}</p>
         <h2 id="pv-title">${p.name}</h2>
-        <p class="pv-price">${fmtPrice(p.price)}</p>
+        <p class="pv-price">${priceHTML(p)}</p>
         <p class="pv-desc">${p.description}</p>
         <div class="pv-block"><span class="pv-label">Colour</span><span id="pv-colour" class="pv-val"></span>${many ? `<span class="pv-sub">Available in ${p.colours.map(c => c.name).join(", ")}</span>` : ""}</div>
         ${(p.sizes || []).length ? `<div class="pv-block"><span class="pv-label">Size</span><div class="sizes" role="group" aria-label="Choose size">${p.sizes.map(s => `<button type="button" class="size" data-s="${s}" aria-pressed="false">${s}</button>`).join("")}</div><p class="err" id="pv-size-err" role="alert"></p></div>` : ""}
         <div class="pv-block"><span class="pv-label">Quantity</span><div class="qty vq"><button type="button" data-vq="-1" aria-label="Decrease quantity">&minus;</button><span id="pv-qty" aria-live="polite">1</span><button type="button" data-vq="1" aria-label="Increase quantity">+</button></div></div>
         <div class="pv-block"><span class="pv-label">Availability</span><span class="pv-val">${p.availability}</span></div>
-        <div class="pv-cta"><div class="pv-btns"><button type="button" id="pv-add" class="btn pv-wa">Add to Cart</button><a id="pv-order" class="btn btn-ghost pv-wa">Order Now</a></div><a id="pv-wa" class="pv-ask" target="_blank" rel="noopener">Or ask a quick question on WhatsApp</a></div>
+        <div class="pv-cta"><div class="pv-btns">${p.soldOut ? '<button type="button" class="btn pv-wa" disabled>Out of stock</button><a id="pv-order" class="btn btn-ghost pv-wa is-off" aria-disabled="true">Order Now</a>' : '<button type="button" id="pv-add" class="btn pv-wa">Add to Cart</button><a id="pv-order" class="btn btn-ghost pv-wa">Order Now</a>'}</div><a id="pv-wa" class="pv-ask" target="_blank" rel="noopener">Or ask a quick question on WhatsApp</a></div>
       </div></div>
       <section class="pv-more"><span class="eyebrow">You may also like</span><h3>More from VORIX</h3><div class="grid">${related.map(cardHTML).join("")}</div></section>`;
     track = $(".pv-track", pv); dots = $$(".pv-dots button", pv); sws = $$(".sw", pv);
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dots.forEach((d, k) => { d.classList.toggle("on", k === idx); d.setAttribute("aria-current", k === idx); });
     sws.forEach((b, k) => b.setAttribute("aria-pressed", k === s.ci));
     $("#pv-wa").href = waURL(cur, c.name, size);
-    $("#pv-order").href = orderURL(cur, c.name, size, vqty);
+    if (!cur.soldOut) $("#pv-order").href = orderURL(cur, c.name, size, vqty);
   }
   const go = i => { idx = (i + slides.length) % slides.length; sync(); startAuto(); };
   function closeProduct() {

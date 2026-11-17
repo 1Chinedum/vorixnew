@@ -9,7 +9,8 @@
 | 4 | VORIX Quarter-Zip Sweatshirt | ₦75,000 | ₦38,000 (sample) |
 | 5 | Red & Black Track Jacket Set | ₦150,000 | ₦55,000 (sample) |
 | 6 | Black & Orange Track Set | ₦190,000 | ₦150,000 (earlier official price), ₦58,000 (sample) |
+| 7 | VORIX Wide-Leg Joggers | ₦45,000 | new product |
 
 Notes
 - The earlier price-list image showed Crop Top ₦65,000. VORIX then confirmed the Racer Crop Top is ₦40,000, so ₦40,000 is used.
-- The price list also shows Joggers ₦45,000 and Jersey ₦80,000, which have no matching products on the website yet.
+- Joggers (₦45,000) are now on the website as product 7. The price list also shows a Jersey at ₦80,000, which has no matching product yet.

@@ -68,7 +68,13 @@ const products = [
     colours: [
       C("Black & Orange", ["#151515", "#E9822B"], "trackset-black-orange.jpg", "#fefefe", [])
     ],
-    sizes: ["S", "M", "L", "XL"], availability: AVAIL, featured: true, newArrival: false, keywords: ["jacket", "trousers", "pants", "set", "tracksuit", "two piece"] }
+    sizes: ["S", "M", "L", "XL"], availability: AVAIL, featured: true, newArrival: false, keywords: ["jacket", "trousers", "pants", "set", "tracksuit", "two piece"] },
+  { id: 7, name: "VORIX Wide-Leg Joggers", category: "Casual Wear", price: 45000, /* OFFICIAL price, confirmed by VORIX */
+    description: "Relaxed wide-leg joggers in soft black fleece with an elasticated drawstring waist, side pockets and the VORIX “Wear Your Vision” logo on the hip. Comfortable, easy and made for everyday.",
+    colours: [
+      C("Black", "#151515", "joggers-black.jpg", "#fefefe", [])
+    ],
+    sizes: ["S", "M", "L", "XL"], availability: AVAIL, featured: true, newArrival: true, keywords: ["joggers", "sweatpants", "trousers", "pants", "wide leg", "drawstring"] }
 ];
 
 function waURL(p, colour, size) {

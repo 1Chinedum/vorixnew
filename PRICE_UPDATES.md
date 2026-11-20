@@ -10,6 +10,7 @@
 | 5 | Red & Black Track Jacket Set | ₦150,000 | ₦55,000 (sample) |
 | 6 | Black & Orange Track Set | ₦190,000 | ₦150,000 (earlier official price), ₦58,000 (sample) |
 | 7 | VORIX Wide-Leg Joggers | ₦45,000 | new product |
+| 8 | VORIX Stay In Motion - Hoodie & Jogger | ₦220,000 | new product |
 
 Notes
 - The earlier price-list image showed Crop Top ₦65,000. VORIX then confirmed the Racer Crop Top is ₦40,000, so ₦40,000 is used.

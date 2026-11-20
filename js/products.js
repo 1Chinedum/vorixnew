@@ -74,7 +74,13 @@ const products = [
     colours: [
       C("Black", "#151515", "joggers-black.jpg", "#fefefe", [])
     ],
-    sizes: ["S", "M", "L", "XL"], availability: AVAIL, featured: true, newArrival: true, keywords: ["joggers", "sweatpants", "trousers", "pants", "wide leg", "drawstring"] }
+    sizes: ["S", "M", "L", "XL"], availability: AVAIL, featured: true, newArrival: true, keywords: ["joggers", "sweatpants", "trousers", "pants", "wide leg", "drawstring"] },
+  { id: 8, name: "VORIX Stay In Motion - Hoodie & Jogger", category: "Sets & Jackets", price: 220000, /* OFFICIAL price, confirmed by VORIX */
+    description: "A matching black hoodie and wide-leg jogger set. “Stay In Motion” runs in script down both sleeves and the leg, the VORIX crest sits on the chest and hip, and the back of the hoodie reads “members only”. Wear it together or split the set.",
+    colours: [
+      C("Black", "#151515", "set-stay-in-motion.jpg", "#d7d7db", [])
+    ],
+    sizes: ["S", "M", "L", "XL"], availability: AVAIL, featured: true, newArrival: true, keywords: ["hoodie", "jogger", "joggers", "set", "tracksuit", "two piece", "stay in motion", "members only"] }
 ];
 
 function waURL(p, colour, size) {

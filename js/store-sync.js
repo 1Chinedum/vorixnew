@@ -37,7 +37,7 @@
     if (!colours.length) colours = [{ name: defs[0].name, swatch: defs[0].swatch, image: PLACEHOLDER, bg: sand, additionalImages: [] }];
     const stock = Math.max(0, Math.floor(Number(r.stock_quantity)) || 0), sold = stock === 0;
     const price = Number(r.price), prev = r.previous_price == null ? null : Number(r.previous_price);
-    return {
+    const out = {
       id: Number(r.id), name: clean(r.name), category: clean(r.categories && r.categories.name) || "Collection",
       price: Number.isFinite(price) ? price : null,
       previousPrice: Number.isFinite(prev) && prev > price ? prev : null,
@@ -47,6 +47,7 @@
       soldOut: sold, stock, featured: !!r.is_featured, newArrival: !!r.is_new_arrival,
       keywords: r.sku ? [clean(r.sku)] : []
     };
+    return typeof applySale === "function" ? applySale(out) : out;      // the site-wide sale (DISCOUNT_PERCENT in products.js) also applies to products from Supabase
   }
 
   async function load() {

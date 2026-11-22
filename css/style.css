@@ -206,6 +206,7 @@ body.lock{overflow:hidden}
 @media(prefers-reduced-motion:reduce){#toast{transition:none}.cart-badge.bump,.qa{animation:none}}
 @media(max-width:820px){body.lock #toast{bottom:12.6rem}}
 
-.was{color:var(--stone);font-weight:300;font-size:.82em;margin-left:.4rem}
+.was{display:block;color:var(--stone);font-weight:300;font-size:.82em;margin-top:.1rem}
+.off{display:inline-block;margin-left:.5rem;padding:.08rem .5rem;border-radius:99px;background:var(--red,#B3261E);color:#fff;font-size:.72rem;font-weight:500;letter-spacing:.04em;vertical-align:middle}
 .tag.out{background:var(--ink);color:#fff}
 .is-off{pointer-events:none;opacity:.35}

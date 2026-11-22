@@ -7,6 +7,12 @@
    sizes: ["S", "M", "L"] shows size buttons. [] hides them. */
 const WHATSAPP_NUMBER = "2347076316859";
 
+/* SALE: this percentage is taken off EVERY product price automatically.
+   The "price" written on each product below stays the regular (official) price. The site shows the reduced price
+   tagged "-20%" with the regular price struck through underneath, and the bag, checkout and WhatsApp message
+   all use the reduced price. Set to 0 to end the sale (prices go back to normal everywhere). */
+const DISCOUNT_PERCENT = 20;
+
 /* Social media profile links (homepage "Follow VORIX" section).
    >>> REPLACE each address below with the official VORIX profile link, e.g. "https://www.instagram.com/yourhandle".
    Until you do, each button simply opens that platform's home page. */
@@ -82,6 +88,17 @@ const products = [
     ],
     sizes: ["S", "M", "L", "XL"], availability: AVAIL, featured: true, newArrival: true, keywords: ["hoodie", "jogger", "joggers", "set", "tracksuit", "two piece", "stay in motion", "members only"] }
 ];
+
+/* Applies the sale to one product: regular price -> previousPrice (struck through), reduced price -> price. */
+function applySale(p) {
+  const d = Number(DISCOUNT_PERCENT);
+  if (d > 0 && d < 100 && typeof p.price === "number" && !p.previousPrice) {
+    p.previousPrice = p.price;
+    p.price = Math.round(p.price * (100 - d) / 100);
+  }
+  return p;
+}
+products.forEach(applySale);
 
 function waURL(p, colour, size) {
   const msg = "Hello VORIX, I am interested in the " + p.name + (colour && !p.name.toLowerCase().includes(colour.toLowerCase()) ? " in " + colour : "") +

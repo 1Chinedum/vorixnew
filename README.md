@@ -20,7 +20,7 @@ One object in the `products` array = ONE clothing design. Its colours live insid
 6. `featured: true` shows it on the homepage (first 8). `newArrival: true` adds it to New Arrivals.
 7. `category` creates the homepage tile and the Collections filter automatically.
 To change a price or description later, just edit that product's line.
-All prices in the file are the official VORIX prices (see PRICE_UPDATES.md). To change a price, edit that one number: it updates everywhere automatically.
+The `price` on each product is its regular official price (see PRICE_UPDATES.md). A site-wide sale is set by `DISCOUNT_PERCENT` at the top of the file (currently 20): the reduced price is shown tagged "-20%" with the regular price struck through, and the bag, checkout and WhatsApp message use the reduced price. Set it to 0 to end the sale. To change a price, edit that one number: it updates everywhere automatically.
 
 ## Change WhatsApp details
 In `js/products.js` change `WHATSAPP_NUMBER` (international format, no +, e.g. `2347076316859`). Also edit the visible number `07076316859` in `contact.html` (the `tel:` link and text) and in the footer of each HTML page.

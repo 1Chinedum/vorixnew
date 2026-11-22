@@ -14,7 +14,11 @@ function dotsHTML(p, max = 4) {
     `<button type="button" class="dot${i === 0 ? " on" : ""}" data-colour="${i}" style="background:${swatchCSS(c.swatch)}" title="${c.name}" aria-label="Show ${c.name}"></button>`).join("");
   return `<span class="dots" role="group" aria-label="Available in ${p.colours.map(c => c.name).join(", ")}">${shown}${p.colours.length > max ? `<span class="more">+${p.colours.length - max}</span>` : ""}</span>`;
 }
-const priceHTML = p => fmtPrice(p.price) + (p.previousPrice ? ` <s class="was" aria-label="Previous price ${fmtPrice(p.previousPrice)}">${fmtPrice(p.previousPrice)}</s>` : "");
+const priceHTML = p => {
+  if (!p.previousPrice || typeof p.price !== "number") return fmtPrice(p.price);
+  const off = Math.round((1 - p.price / p.previousPrice) * 100);
+  return `<span class="now">${fmtPrice(p.price)}</span><span class="off" aria-label="${off} percent off">-${off}%</span><s class="was" aria-label="Original price ${fmtPrice(p.previousPrice)}">${fmtPrice(p.previousPrice)}</s>`;
+};
 function cardHTML(p) {
   const c = p.colours[0];
   return `<article class="card reveal" data-id="${p.id}">

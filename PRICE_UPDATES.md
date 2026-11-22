@@ -1,5 +1,21 @@
 # VORIX price record
 
+## 20% SALE (active)
+`DISCOUNT_PERCENT = 20` at the top of `js/products.js` takes 20% off every product automatically. The prices in the table below are the REGULAR prices (shown struck through). Customers see and pay the reduced price:
+
+| Product | Regular (struck through) | Sale price |
+|---|---|---|
+| Wear Your Vision Tee | ₦60,000 | ₦48,000 |
+| Basketball Tank | ₦40,000 | ₦32,000 |
+| Racer Crop Top | ₦40,000 | ₦32,000 |
+| Quarter-Zip Sweatshirt | ₦75,000 | ₦60,000 |
+| Red & Black Track Jacket Set | ₦150,000 | ₦120,000 |
+| Black & Orange Track Set | ₦190,000 | ₦152,000 |
+| Wide-Leg Joggers | ₦45,000 | ₦36,000 |
+| Stay In Motion - Hoodie & Jogger | ₦220,000 | ₦176,000 |
+
+To end the sale set `DISCOUNT_PERCENT = 0`; to change it, change the number (for example 10 or 30).
+
 ## Official prices (confirmed by VORIX, Nov 2026)
 | ID | Product | Price | Previous (sample or earlier) |
 |---|---|---|---|

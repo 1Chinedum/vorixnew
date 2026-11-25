@@ -8,7 +8,7 @@
 <meta property="og:title" content="VORIX | Modern Fashion">
 <meta property="og:description" content="VORIX is a modern fashion label. Explore the collection and inquire on WhatsApp.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/images/hero.jpg">
+<meta property="og:image" content="assets/images/mannequin/look-1.webp">
 <link rel="icon" href="assets/icons/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,7 @@ function logoFallback(i){var s=document.createElement('span');s.className='wordm
   </div>
 </header>
 <main id="main">
+<div class="hero-track" id="heroTrack">
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-text">
@@ -47,13 +48,19 @@ function logoFallback(i){var s=document.createElement('span');s.className='wordm
       <div class="btn-row"><a class="btn" href="collections.html">Explore Collection</a><a class="btn btn-ghost" href="about.html">Discover VORIX</a></div>
       <div class="hero-foot"><a class="scroll" href="#shop" aria-label="Scroll to collections"><i></i>Scroll</a><span class="sig">VORI<b>X</b></span></div>
     </div>
-    <figure class="hero-photo">
-      <img src="assets/images/hero.jpg" alt="VORIX campaign: three models in black, white and red graphic tees in front of a shipping container" onerror="imgFallback(this)">
-      <span class="idx">N°01 / Collection</span>
-      <figcaption>VORIX — The Collection</figcaption>
+    <figure class="hero-photo" id="looks">
+      <img class="look is-active" src="assets/images/mannequin/look-1.webp" alt="Black hoodie and joggers with Stay In Motion script" width="941" height="1671" data-name="Stay In Motion set" decoding="async" fetchpriority="high" onerror="imgFallback(this)">
+      <img class="look" src="assets/images/mannequin/look-2.webp" alt="Black velour track set with orange panels" width="941" height="1671" data-name="Velour track set" decoding="async" loading="lazy" onerror="imgFallback(this)">
+      <img class="look" src="assets/images/mannequin/look-3.webp" alt="Black ribbed tank with VORIX print and baggy black jeans" width="941" height="1671" data-name="Ribbed tank and baggy jeans" decoding="async" loading="lazy" onerror="imgFallback(this)">
+      <img class="look" src="assets/images/mannequin/look-4.webp" alt="Red and black track jacket with matching shorts" width="941" height="1671" data-name="Track jacket and shorts" decoding="async" loading="lazy" onerror="imgFallback(this)">
+      <img class="look" src="assets/images/mannequin/look-5.webp" alt="White quarter-zip sweatshirt with green collar and black jeans" width="941" height="1671" data-name="Quarter-zip and baggy jeans" decoding="async" loading="lazy" onerror="imgFallback(this)">
+      <span class="idx"><b>01</b> / 05</span>
+      <figcaption>Stay In Motion set</figcaption>
+      <div class="look-dots" role="group" aria-label="Choose a look"><button type="button" aria-label="Show look 1: Stay In Motion set" aria-current="true"></button><button type="button" aria-label="Show look 2: Velour track set"></button><button type="button" aria-label="Show look 3: Ribbed tank and baggy jeans"></button><button type="button" aria-label="Show look 4: Track jacket and shorts"></button><button type="button" aria-label="Show look 5: Quarter-zip and baggy jeans"></button></div>
     </figure>
   </div>
 </section>
+</div>
 <div class="marquee" aria-hidden="true"><div class="track"><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i><span>WEAR YOUR IDENTITY</span><i>✕</i><span>VORIX</span><i>✕</i><span>THE COLLECTION</span><i>✕</i></div></div>
 <section class="section" id="shop"><div class="container">
   <div class="sec-head reveal"><div><span class="eyebrow">N°02 / Collections</span><h2>Shop by collection</h2></div><a class="link" href="collections.html">View All Collections</a></div>
@@ -109,6 +116,7 @@ function logoFallback(i){var s=document.createElement('span');s.className='wordm
 <script src="js/supabase-config.js"></script>
 <script src="js/store-sync.js"></script>
 <script src="js/main.js"></script>
+<script src="js/hero-looks.js"></script>
 
 </body>
 </html>
